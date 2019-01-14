@@ -1,0 +1,63 @@
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="{%url 'index'%}">YB Blog </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+     
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        
+        <ul class="navbar-nav mr-auto">
+         
+          <li class="nav-item active">
+            <a class="nav-link" href="{%url 'about'%}">Hakkımızda <span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{%url 'article:articles'%}">Makaleler<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+
+        <ul class="navbar-nav ml-auto">
+        
+          {% if request.user.is_authenticated %}
+           
+            <li class="nav-item active">
+            <a class="nav-link" href="/articles/dashboard">Kontrol Paneli  <span class="sr-only">(current)</span></a>
+            </li>   
+           
+            </li>   
+           <li class="nav-item active">
+            <a class="nav-link" href="/user/logout">Çıkış Yap  <span class="sr-only">(current)</span></a>
+          </li>   
+          {% else %}
+                  
+           
+           <li class="nav-item active">
+           <a class="nav-link" href="/user/login">Giriş Yap <span class="sr-only">(current)</span></a>
+          
+          {% endif %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/register">Kayıt Ol <span class="sr-only">(current)</span></a>
+          </li>   
+
+            {% if request.user.is_authenticated %}
+              <li class="nav-item active">
+              <a class="nav-link" >User:{{request.user.username}} <span class="sr-only">(current)</span></a>
+              </li>  
+            {%endif%} 
+
+        </ul>  
+
+
+    </div>
+
+</nav>
+
+
+
+
+
+
